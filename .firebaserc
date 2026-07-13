@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "vislet-8830b"
-  }
+  },
+  "targets": {
+    "vislet-8830b": {
+      "hosting": {
+        "main-site": [
+          "vislet2"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

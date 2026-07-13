@@ -108,7 +108,7 @@ body {
 }
 
 #googleButton {
-    background-color: #ffffff;
+    background-color: #ffffff; /* Remove pointer-events: none from here */
     color: #1e293b;
     border: 2px solid #1e293b;
     border-radius: 25px;
@@ -116,6 +116,11 @@ body {
     font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Add it here instead to target the text and SVG inside the button */
+#googleButton * {
+    pointer-events: none;
 }
 
 #googleButton:hover {
