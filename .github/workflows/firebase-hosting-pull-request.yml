@@ -17,4 +17,4 @@ jobs:
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_VISLET_8830B }}
-          projectId: vislet-8830b
+          projectId: vislet2

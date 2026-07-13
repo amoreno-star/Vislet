@@ -1,13 +1,14 @@
 // 1. Import the necessary Firebase functions
 import { initializeApp } from "https://gstatic.com";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://gstatic.com";
+const cors = require('cors')({ origin: true });
 
 // 2. Your project's Firebase configuration (Replace with your actual keys from Firebase Console)
 const firebaseConfig = {
   apiKey: "AIzaSyCFAR1ndU7YMNbXCE22ZUAEsG9a3InIa6c",
   authDomain: "vislet2.firebaseapp.com",
-  projectId: "vislet-8830b",
-  storageBucket: "vislet-8830b.firebasestorage.app",
+  projectId: "vislet2",
+  storageBucket: "vislet2.firebasestorage.app",
   messagingSenderId: "730732470355",
   appId: "1:730732470355:web:9e3f6afeb7930ff56266a6",
   measurementId: "G-NB0MCDKXNP"
@@ -18,6 +19,11 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
+app.use(
+    cors({
+        orgin: "https://vislet2.web.app/"
+    })
+)
 // 4. Wait for the page structure to be fully loaded
 window.addEventListener('DOMContentLoaded', () => {
     console.log("DOM loaded. Attaching button listeners...");

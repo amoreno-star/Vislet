@@ -1,8 +1,15 @@
 {
   "projects": {
-    "default": "vislet-8830b"
+    "default": "vislet2"
   },
   "targets": {
+    "vislet2": {
+      "hosting": {
+        "main-site": [
+          "vislet2"
+        ]
+      }
+    },
     "vislet-8830b": {
       "hosting": {
         "main-site": [
