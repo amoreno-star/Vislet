@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Vislet Dashboard</title>
-    <link rel="icon" type="image/png" href="/Logo/Vislet.png">
+    <link rel="icon" type="image/png" href="../Logo/Vislet.png">
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-
-    <!-- Persistent Global Toggle Button (Always visible on PC/Laptop, hidden on Mobile) -->
-    <button id="GlobalDesktopToggle" class="toggle-btn" onclick="toggleSidebar()" title="Toggle Sidebar">☰</button>
 
     <div id="Main">
         
@@ -21,25 +18,27 @@
                     <div id="Logo">Vislet</div>
                 </div>
                 
-                <!-- Swipeable Track Component for gesture drag mechanics -->
-                <div class="nav-scroll-container">
-                    <nav class="nav-links">
-                        <button class="nav-item active" onclick="location.href='dashboard.html'">
+                <!-- Swipeable Track Component for liquid gesture drag mechanics -->
+                <div id="MobileNavWrapper" class="nav-scroll-container">
+                    <nav id="NavLinksTrack" class="nav-links">
+                        <!-- Points to itself inside the same folder -->
+                        <div class="nav-item active" data-url="dashboard.html">
                             <span class="icon">📊</span> 
                             <span class="nav-text">Dashboard</span>
-                        </button>
-                        <button class="nav-item" onclick="location.href='documents.html'">
+                        </div>
+                        <!-- Step out of /dashboard/ folder and into target subdirectory folders -->
+                        <div class="nav-item" data-url="../documents/documents.html">
                             <span class="icon">📄</span> 
                             <span class="nav-text">Documents</span>
-                        </button>
-                        <button class="nav-item" onclick="location.href='payment.html'">
+                        </div>
+                        <div class="nav-item" data-url="../payments/payments.html">
                             <span class="icon">💳</span> 
                             <span class="nav-text">Payment</span>
-                        </button>
-                        <button class="nav-item" onclick="location.href='profile.html'">
+                        </div>
+                        <div class="nav-item" data-url="../profile/profile.html">
                             <span class="icon">👤</span> 
                             <span class="nav-text">Profile</span>
-                        </button>
+                        </div>
                     </nav>
                 </div>
             </div>
@@ -48,7 +47,7 @@
             </div>
         </div>
 
-        <!-- Main Dashboard Workspace -->
+        <!-- Main Workspace Area -->
         <div id="RightSide">
             <div class="window-scroll-wrapper">
                 <div class="window-content">

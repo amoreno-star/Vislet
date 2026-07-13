@@ -21,35 +21,6 @@ body, html {
     position: relative;
 }
 
-/* --- PERSISTENT DESKTOP TOGGLE CONFIG --- */
-#GlobalDesktopToggle {
-    position: fixed;
-    top: 18px;
-    left: 215px; 
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    color: #0f172a;
-    font-size: 18px;
-    width: 38px;
-    height: 38px;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000; 
-    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#GlobalDesktopToggle:hover {
-    background: #f1f5f9;
-}
-
-/* Move toggle button to the screen edge when sidebar collapses on desktop */
-body.sidebar-hidden #GlobalDesktopToggle {
-    left: 16px;
-}
-
 /* --- SIDEBAR PANEL (DESKTOP STATE) --- */
 #LeftSide {
     width: 280px;
@@ -60,16 +31,7 @@ body.sidebar-hidden #GlobalDesktopToggle {
     flex-direction: column;
     justify-content: space-between;
     padding: 24px;
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 100;
-}
-
-body.sidebar-hidden #LeftSide {
-    width: 0px;
-    min-width: 0px;
-    padding: 24px 0px;
-    overflow: hidden;
-    border-right: none;
 }
 
 .logo-header {
@@ -96,8 +58,6 @@ body.sidebar-hidden #LeftSide {
 }
 
 .nav-item {
-    background: none;
-    border: none;
     text-align: left;
     display: flex;
     align-items: center;
@@ -110,13 +70,14 @@ body.sidebar-hidden #LeftSide {
     cursor: pointer;
     width: 100%;
     transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .nav-item:hover { background-color: #f1f5f9; color: #334155; }
 .nav-item.active { background-color: #e0e7ff; color: #4f46e5; }
 .footer { font-size: 12px; color: #94a3b8; line-height: 1.5; white-space: nowrap; }
 
-/* --- CORE WORKSPACE VIEW AREA --- */
+/* --- CORE WORKSPACE AREA --- */
 #RightSide {
     flex: 1;
     background-color: #ffffff;
@@ -132,13 +93,13 @@ body.sidebar-hidden #LeftSide {
 }
 
 .window-content {
-    padding: 40px 40px 40px 64px; 
+    padding: 40px; 
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
 }
 
-/* Dashboard Elements */
+/* Dashboard Component Styles */
 .dashboard-header {
     display: flex;
     justify-content: space-between;
@@ -183,37 +144,37 @@ body.sidebar-hidden #LeftSide {
     font-weight: 600;
 }
 
-/* --- MOBILE LIQUID GLASS MECHANICS (INSTAGRAM-STYLE BAR) --- */
+/* --- MOBILE LIQUID GLASS & GESTURE DRAGGING --- */
 @media (max-width: 768px) {
     #Main {
         flex-direction: column;
     }
 
-    /* CRITICAL FIX: Explicitly remove the desktop toggle button on mobile viewports */
-    #GlobalDesktopToggle {
-        display: none !important; 
+    .footer {
+        display: none !important;
     }
 
-    /* Fixed Liquid Glass Container Dock */
+    /* Fixed Bottom Glass Dock Layer */
     #LeftSide {
         position: fixed;
         bottom: 24px;
         left: 50%;
         transform: translateX(-50%);
         width: calc(100% - 32px);
-        max-width: 380px;
+        max-width: 360px;
         min-width: 0;
         height: 64px;
-        padding: 0;
+        padding: 0 !important;
         border-radius: 32px;
         border: 1px solid rgba(255, 255, 255, 0.25);
-        background: rgba(255, 255, 255, 0.75);
+        background: rgba(255, 255, 255, 0.78);
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
         box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.15);
         display: flex;
         flex-direction: row;
         overflow: hidden;
+        z-index: 9999;
     }
 
     .brand-content {
@@ -221,37 +182,33 @@ body.sidebar-hidden #LeftSide {
         height: 100%;
     }
 
-    /* Dynamic Horizontal Scroll Container Module */
+    /* Gesture Scroll Shell Container Track */
     .nav-scroll-container {
         width: 100%;
         height: 100%;
-        overflow-x: auto;
+        overflow-x: scroll;
         overflow-y: hidden;
         display: block;
-        
-        /* Forces smooth native drag scrolling on swipe layers */
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        
-        /* Overrides touch handling blocks to capture drag movements */
-        touch-action: pan-x; 
+        touch-action: pan-x !important;
     }
 
     .nav-scroll-container::-webkit-scrollbar {
         display: none;
     }
 
-    /* Horizontal flex link row matches slider track paths */
+    /* Ribbon Track Extended Width */
     .nav-links {
         display: flex;
         flex-direction: row;
-        width: 135%; /* Extends past edges to give momentum feel when sliding */
+        width: 150%; 
         height: 100%;
         gap: 0;
+        transition: transform 0.1s ease-out; 
     }
 
-    /* Slider Button Item Component Layout */
+    /* Snapping Navigation Node Tiles */
     .nav-item {
         flex: 1 1 0%;
         height: 100%;
@@ -264,32 +221,22 @@ body.sidebar-hidden #LeftSide {
         color: #94a3b8;
         background: transparent;
         text-align: center;
-        
-        /* Automatic Alignment Snap Anchor */
         scroll-snap-align: center;
-        user-select: none;
+        user-select: none !important;
+        -webkit-user-select: none !important;
+        -webkit-user-drag: none !important;
+        touch-action: pan-x !important;
+        cursor: grab;
     }
-
+    
+    .nav-item:active { cursor: grabbing; }
     .nav-item:hover { background: transparent; }
     .nav-item.active { background: transparent; color: #4f46e5; }
     .nav-text { font-size: 10px; font-weight: 600; display: block; }
     .icon { font-size: 16px; }
 
-    .logo-header, .footer {
-        display: none !important;
-    }
-
-    /* Workspace Content Spacing Base Clearances */
-    .window-content {
-        padding: 32px 20px 120px 20px;
-    }
-
-    .dashboard-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-        margin-bottom: 24px;
-    }
-
+    .logo-header { display: none !important; }
+    .window-content { padding: 30px 20px 120px 20px; }
+    .dashboard-header { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
     .btn-apply { width: 100%; }
 }

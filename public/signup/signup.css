@@ -20,6 +20,11 @@ body {
     width: 100%; 
 }
 
+#BackPage {
+    margin-top: 20px;
+    text-align: center;
+}
+
 /* Left Side Layout */
 #LeftSide { 
     background-color: #1e293b; 
