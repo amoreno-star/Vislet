@@ -1,0 +1,211 @@
+/* Base Resets & Global Variables */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body { 
+    font-family: Arial, sans-serif; 
+    background-color: #f4f4f9; 
+    color: #333; 
+    min-height: 100vh; 
+}
+
+/* Main Container split 75/100 on desktop according to flex configuration */
+#MainContainer { 
+    display: flex; 
+    flex-direction: row; 
+    min-height: 100vh; 
+    width: 100%; 
+}
+
+/* Left Side Layout */
+#LeftSide { 
+    background-color: #1e293b; 
+    color: #ffffff; 
+    flex: 0.75; 
+    display: flex; 
+    flex-direction: column; 
+    padding: 40px; 
+}
+
+.brand-content { 
+    user-select: none; /* Prevents text selection on double-click */
+    margin-top: auto; 
+    margin-left: 20px; 
+}
+
+#Logo { 
+    font-size: 5rem; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+}
+
+#Tagline {
+    font-size: 1.25rem;
+    color: #cbd5e1;
+    max-width: 400px;
+    line-height: 1.5;
+}
+
+/* Footer Styling */
+.footer { 
+    user-select: none; /* Prevents text selection on double-click */
+    margin-top: auto; 
+    padding-top: 20px; 
+    font-size: 0.9rem; 
+    color: #94a3b8; 
+    background: none; 
+}
+
+/* Right Side Layout */
+#RightSide { 
+    background-color: #ffffff; 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 20px; 
+    padding: 40px; 
+}
+
+/* Form Card Element Container */
+.card { 
+    background-color: #10273d; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    padding: 40px; 
+    width: 100%; 
+    max-width: 400px; 
+    text-align: center; 
+}
+
+/* Form Layout Elements */
+#form {
+    width: 100%;
+}
+
+#signupForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Uniform structural flow gaps for fields */
+}
+
+/* Form Field Input Text Element Properties */
+#signupForm input {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
+    background-color: #1e3a5f;
+    border: 1px solid #244b7a;
+    border-radius: 25px; /* Clean boundary curves blending layout elements */
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#signupForm input::placeholder {
+    color: #94a3b8;
+}
+
+#signupForm input:focus {
+    border-color: #006aff;
+    box-shadow: 0 0 0 3px rgba(0, 106, 255, 0.25);
+}
+
+.button-container { 
+    margin-top: 16px; 
+    display: flex; 
+    justify-content: center; 
+}
+
+/* Base Native Form Submission Button and Federated Login Button Properties */
+#signupForm button[type="submit"], #googleButton { 
+    width: 100%; 
+    max-width: 320px; 
+    padding: 15px 25px; 
+    font-size: 1.1rem; 
+    border-radius: 25px; 
+    cursor: pointer; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 12px; /* Clean tracking gaps for internal SVG icon graphics */
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; 
+}
+
+/* Native Sign Up Submit Action Styling */
+#signupForm button[type="submit"] { 
+    user-select: none; 
+    background-color: #1952ad; 
+    color: #ffffff; 
+    border: none; 
+    margin-top: 4px;
+}
+
+#signupForm button[type="submit"]:hover { 
+    background-color: #006aff; 
+}
+
+#signupForm button[type="submit"]:active { 
+    background-color: #004bb5; 
+}
+
+#signupForm button[type="submit"]:focus { 
+    outline: none; 
+    box-shadow: 0 0 0 3px rgba(0, 106, 255, 0.5); 
+}
+
+/* Federated Google Login Framework Styling */
+#googleButton { 
+    user-select: none; 
+    background-color: #ffffff; 
+    color: #1e293b; 
+    border: 2px solid #ffffff; /* Uses white border layout line matching background container */
+}
+
+#googleButton svg { 
+    flex-shrink: 0; 
+    display: block; 
+}
+
+#googleButton:hover { 
+    background-color: #f0f0f0; 
+    border-color: #f0f0f0; 
+    color: #006aff; 
+}
+
+#googleButton:active { 
+    background-color: #e0e0e0; 
+    border-color: #e0e0e0; 
+    color: #004bb5; 
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) { 
+    #MainContainer { 
+        flex-direction: column; 
+    } 
+    #LeftSide, #RightSide { 
+        flex: none; 
+        width: 100%; 
+        min-height: 50vh; 
+        padding: 30px; 
+    } 
+    .brand-content {
+        margin-left: 0;
+        text-align: center;
+    }
+    #Logo {
+        font-size: 3.5rem;
+    }
+    #Tagline {
+        margin: 0 auto;
+    }
+    .footer { 
+        text-align: center; 
+    } 
+}

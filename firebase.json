@@ -1,11 +1,21 @@
 {
   "hosting": {
-    "target": "main-site",
-    "public": "public/MainPage",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "/**",
+        "headers": [
+          {
+            "key": "Cross-Origin-Opener-Policy",
+            "value": "same-origin-allow-popups"
+          }
+        ]
+      }
     ]
   }
 }

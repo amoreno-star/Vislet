@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* Main Container split 50/50 on desktop */
+#MainContainer {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Left Side Layout */
+#LeftSide {
+    background-color: #1e293b;
+    color: #ffffff;
+    flex: 0.75;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+#Logo {
+    user-select: none; /* Prevents text selection on double-click */
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: auto;
+}
+
+#Logo2 {
+    user-select: none; /* Prevents text selection on double-click */
+    font-size: 3.25rem;
+    color: #f5f9ff;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: auto;
+}
+
+.brand-content {
+    user-select: none; /* Prevents text selection on double-click */
+    margin-top: auto;
+    margin-left: 20px;
+}
+
+/* Footer Styling */
+.footer {
+    user-select: none; /* Prevents text selection on double-click */
+    margin-top: auto;
+    padding-top: 20px;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    background: none;
+}
+
+/* Right Side Layout */
+#RightSide {
+    background-color: #ffffff;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+.card {
+    background-color: #10273d;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.button-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Base button properties for equal alignment widths */
+#getStartedButton, #googleButton {
+    width: 100%;
+    max-width: 320px;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* Clean tracking gaps for internal SVG icon graphics */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+#getStartedButton {
+    user-select: none; /* Prevents text selection on double-click */
+    background-color: #1952ad;
+    color: #ffffff;
+    border: none;
+}
+
+#getStartedButton:hover {
+    background-color: #006aff;
+}
+
+#getStartedButton:active {
+    background-color: #004bb5;
+}
+
+#getStartedButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 106, 255, 0.5);
+}
+
+#getStartedButton:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+}
+
+/* Corrected Google Button properties for visibility inside your dark card */
+#googleButton {
+    user-select: none; /* Prevents text selection on double-click */
+    background-color: #ffffff;
+    color: #1e293b;
+    border: 2px solid #ffffff; /* Uses white border layout line matching background container */
+}
+
+/* Targets the vector graphic inside the code to ensure it scales cleanly */
+#googleButton svg {
+    flex-shrink: 0;
+    display: block;
+}
+
+#googleButton:hover {
+    background-color: #f0f0f0;
+    border-color: #f0f0f0;
+    color: #006aff;
+}
+
+#googleButton:active {
+    background-color: #e0e0e0;
+    border-color: #e0e0e0;
+    color: #004bb5;
+}
+
+/* Responsive design for Mobile Phones */
+@media (max-width: 768px) {
+    #MainContainer {
+        flex-direction: column;
+    }
+    #LeftSide, #RightSide {
+        flex: none;
+        width: 100%;
+        min-height: 50vh;
+        padding: 30px;
+    }
+    .footer {
+        text-align: center;
+    }
+}

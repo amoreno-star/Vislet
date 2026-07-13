@@ -2,10 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vislet Dashboard</title>
+    <link rel="icon" type="image/png" href="/Logo/Vislet.png">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <div>Hello World!</div>
+
+    <!-- Persistent Global Toggle Button (Always visible on PC/Laptop, hidden on Mobile) -->
+    <button id="GlobalDesktopToggle" class="toggle-btn" onclick="toggleSidebar()" title="Toggle Sidebar">☰</button>
+
+    <div id="Main">
+        
+        <!-- Sidebar and Mobile Liquid Bottom Dock Container -->
+        <div id="LeftSide" class="sidebar">
+            <div class="brand-content">
+                <div class="logo-header">
+                    <div id="Logo">Vislet</div>
+                </div>
+                
+                <!-- Swipeable Track Component for gesture drag mechanics -->
+                <div class="nav-scroll-container">
+                    <nav class="nav-links">
+                        <button class="nav-item active" onclick="location.href='dashboard.html'">
+                            <span class="icon">📊</span> 
+                            <span class="nav-text">Dashboard</span>
+                        </button>
+                        <button class="nav-item" onclick="location.href='documents.html'">
+                            <span class="icon">📄</span> 
+                            <span class="nav-text">Documents</span>
+                        </button>
+                        <button class="nav-item" onclick="location.href='payment.html'">
+                            <span class="icon">💳</span> 
+                            <span class="nav-text">Payment</span>
+                        </button>
+                        <button class="nav-item" onclick="location.href='profile.html'">
+                            <span class="icon">👤</span> 
+                            <span class="nav-text">Profile</span>
+                        </button>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer">
+                &copy; 2026 Vislet. All rights reserved.
+            </div>
+        </div>
+
+        <!-- Main Dashboard Workspace -->
+        <div id="RightSide">
+            <div class="window-scroll-wrapper">
+                <div class="window-content">
+                    
+                    <div class="dashboard-header">
+                        <h2>Dashboard</h2>
+                        <button class="btn-apply">Apply for new visa</button>
+                    </div>
+
+                    <div class="section-container">
+                        <h3>Completed visas</h3>
+                        
+                        <div class="visa-card">
+                            <div class="visa-details">
+                                <h4 class="country-name">Argentina</h4>
+                                <p class="visa-type">Student</p>
+                                <p class="payment-date">Paid Jul 13, 2026</p>
+                            </div>
+                            <div class="visa-status">
+                                <span class="status-badge-green">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="dashboard.js"></script>
 </body>
 </html>

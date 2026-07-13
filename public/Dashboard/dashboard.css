@@ -1,0 +1,295 @@
+/* Base Styling Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    color: #1e293b;
+    overflow: hidden;
+}
+
+#Main {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+/* --- PERSISTENT DESKTOP TOGGLE CONFIG --- */
+#GlobalDesktopToggle {
+    position: fixed;
+    top: 18px;
+    left: 215px; 
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #0f172a;
+    font-size: 18px;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; 
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#GlobalDesktopToggle:hover {
+    background: #f1f5f9;
+}
+
+/* Move toggle button to the screen edge when sidebar collapses on desktop */
+body.sidebar-hidden #GlobalDesktopToggle {
+    left: 16px;
+}
+
+/* --- SIDEBAR PANEL (DESKTOP STATE) --- */
+#LeftSide {
+    width: 280px;
+    min-width: 280px;
+    background-color: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+}
+
+body.sidebar-hidden #LeftSide {
+    width: 0px;
+    min-width: 0px;
+    padding: 24px 0px;
+    overflow: hidden;
+    border-right: none;
+}
+
+.logo-header {
+    display: flex;
+    align-items: center;
+    height: 38px;
+    margin-bottom: 32px;
+}
+
+#Logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.nav-scroll-container {
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover { background-color: #f1f5f9; color: #334155; }
+.nav-item.active { background-color: #e0e7ff; color: #4f46e5; }
+.footer { font-size: 12px; color: #94a3b8; line-height: 1.5; white-space: nowrap; }
+
+/* --- CORE WORKSPACE VIEW AREA --- */
+#RightSide {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.window-scroll-wrapper {
+    overflow-y: auto;
+    flex: 1;
+    width: 100%;
+}
+
+.window-content {
+    padding: 40px 40px 40px 64px; 
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Dashboard Elements */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.dashboard-header h2 { font-size: 28px; font-weight: 700; color: #0f172a; }
+.btn-apply {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn-apply:hover { background-color: #1e293b; }
+.section-container h3 { font-size: 16px; font-weight: 600; color: #1e293b; margin-bottom: 20px; }
+
+.visa-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    background-color: #ffffff;
+}
+
+.country-name { font-size: 16px; font-weight: 600; color: #0f172a; margin-bottom: 4px; }
+.visa-type { font-size: 14px; color: #64748b; margin-bottom: 12px; }
+.payment-date { font-size: 13px; color: #94a3b8; }
+.status-badge-green {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* --- MOBILE LIQUID GLASS MECHANICS (INSTAGRAM-STYLE BAR) --- */
+@media (max-width: 768px) {
+    #Main {
+        flex-direction: column;
+    }
+
+    /* CRITICAL FIX: Explicitly remove the desktop toggle button on mobile viewports */
+    #GlobalDesktopToggle {
+        display: none !important; 
+    }
+
+    /* Fixed Liquid Glass Container Dock */
+    #LeftSide {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 32px);
+        max-width: 380px;
+        min-width: 0;
+        height: 64px;
+        padding: 0;
+        border-radius: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+    .brand-content {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Dynamic Horizontal Scroll Container Module */
+    .nav-scroll-container {
+        width: 100%;
+        height: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        display: block;
+        
+        /* Forces smooth native drag scrolling on swipe layers */
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        
+        /* Overrides touch handling blocks to capture drag movements */
+        touch-action: pan-x; 
+    }
+
+    .nav-scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Horizontal flex link row matches slider track paths */
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        width: 135%; /* Extends past edges to give momentum feel when sliding */
+        height: 100%;
+        gap: 0;
+    }
+
+    /* Slider Button Item Component Layout */
+    .nav-item {
+        flex: 1 1 0%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2px;
+        padding: 0;
+        border-radius: 0;
+        color: #94a3b8;
+        background: transparent;
+        text-align: center;
+        
+        /* Automatic Alignment Snap Anchor */
+        scroll-snap-align: center;
+        user-select: none;
+    }
+
+    .nav-item:hover { background: transparent; }
+    .nav-item.active { background: transparent; color: #4f46e5; }
+    .nav-text { font-size: 10px; font-weight: 600; display: block; }
+    .icon { font-size: 16px; }
+
+    .logo-header, .footer {
+        display: none !important;
+    }
+
+    /* Workspace Content Spacing Base Clearances */
+    .window-content {
+        padding: 32px 20px 120px 20px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
+    .btn-apply { width: 100%; }
+}
